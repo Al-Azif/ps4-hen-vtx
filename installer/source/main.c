@@ -4,9 +4,6 @@
 #include "debug.h"
 #include "offsets.h"
 
-#define PS4_UPDATE_FULL_PATH "/update/PS4UPDATE.PUP"
-#define PS4_UPDATE_TEMP_PATH "/update/PS4UPDATE.PUP.net.temp"
-
 extern char kpayload[];
 unsigned kpayload_size;
 
@@ -75,9 +72,6 @@ int install_payload(struct thread *td, struct install_payload_args* args)
 	// flatz allow sys_dynlib_dlsym in all processes 5.05
 	*(uint64_t*)(kernel_base + sys_dynlib_dlsym_patch) = 0x8B4890000001C1E9;
 
-	// spoof sdk_version - enable vr 5.05
-	*(uint32_t *)(kernel_base + sdk_version_patch) = FAKE_FW_VERSION;
-
 	// install kpayload
 	memset(payload_buffer, 0, PAGE_SIZE);
 	memcpy(payload_buffer, payload_data, payload_size);
@@ -97,20 +91,11 @@ int install_payload(struct thread *td, struct install_payload_args* args)
 	return payload_entrypoint();
 }
 
-static inline void patch_update(void)
-{
-	unlink(PS4_UPDATE_FULL_PATH);
-	unlink(PS4_UPDATE_TEMP_PATH);
-
-	mkdir(PS4_UPDATE_FULL_PATH, 0777);
-	mkdir(PS4_UPDATE_TEMP_PATH, 0777);
-}
-
-int _main(struct thread *td) 
+int _main(struct thread *td)
 {
 	int result;
 
-	initKernel();	
+	initKernel();
 	initLibc();
 
 #ifdef DEBUG_SOCKET
@@ -129,8 +114,6 @@ int _main(struct thread *td)
 	result = kexec(&install_payload, &payload_info);
 	result = !result ? 0 : errno;
 	printfsocket("install_payload: %d\n", result);
-
-	patch_update();
 
 	initSysUtil();
 	notify("Welcome to PS4HEN v"VERSION);
