@@ -17,7 +17,7 @@
 
 // Patches
 // debug menu error
-#define debug_menu_error_patch1         0x004F9006
+#define debug_menu_error_patch1         0x004F9008
 #define debug_menu_error_patch2         0x004FA11C
 
 // disable signature check
@@ -29,6 +29,9 @@
 
 // allow sys_dynlib_dlsym in all processes
 #define sys_dynlib_dlsym_patch          0x00237F3A
+
+// enable uart
+#define enable_uart                     0x019ECEB0
 
 // sdk version spoof - enable all VR fws
 #define sdk_version_patch               0x014A63F0
