@@ -99,7 +99,7 @@
 #define enable_fpkg_patch                                           0x003E55E2
 
 // debug pkg free string
-#define fake_free_patch                                             0x00EB21A7
+#define fake_free_patch                                             0x00EA9657
 
 // make pkgs installer working with external hdd
 #define pkg_installer_patch                                         0x00937F10
