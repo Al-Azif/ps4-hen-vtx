@@ -81,33 +81,36 @@
 
 // SceShellCore patches
 // call sceKernelIsGenuineCEX
-#define sceKernelIsGenuineCEX_patch1                                0x0017F4DB
-#define sceKernelIsGenuineCEX_patch2                                0x0079FF6B
-#define sceKernelIsGenuineCEX_patch3                                0x007EC173
-#define sceKernelIsGenuineCEX_patch4                                0x0095068B
+#define sceKernelIsGenuineCEX_patch1                                0x0016D05B
+#define sceKernelIsGenuineCEX_patch2                                0x0079980B
+#define sceKernelIsGenuineCEX_patch3                                0x007E5A13
+#define sceKernelIsGenuineCEX_patch4                                0x0094715B
 
 // call nidf_libSceDipsw
-#define nidf_libSceDipsw_patch1                                     0x00175007
-#define nidf_libSceDipsw_patch2                                     0x0023C8DB
-#define nidf_libSceDipsw_patch3                                     0x0079FF97
-#define nidf_libSceDipsw_patch4                                     0x009506B7
+#define nidf_libSceDipsw_patch1                                     0x0016D087
+#define nidf_libSceDipsw_patch2                                     0x0023747B
+#define nidf_libSceDipsw_patch3                                     0x00799837
+#define nidf_libSceDipsw_patch4                                     0x00947187
 
 // enable data mount
-#define enable_data_mount_patch                                     0x0031EEF3
+#define enable_data_mount_patch                                     0x00319A53
 
 // enable fpkg
-#define enable_fpkg_patch                                           0x003E55E2
+#define enable_fpkg_patch                                           0x003E0602
 
 // debug pkg free string
 #define fake_free_patch                                             0x00EA9687
 
 // make pkgs installer working with external hdd
-#define pkg_installer_patch                                         0x00937F10
+#define pkg_installer_patch                                         0x009312A1
 
 // enable support with 6.xx external hdd
-#define ext_hdd_patch                                               0x0059A26D
+#define ext_hdd_patch                                               0x00593C7D
 
 // enable debug trophies on retail
-#define debug_trophies_patch                                        0x006B2599
+#define debug_trophies_patch                                        0x006ABE39
+
+// screenshot patch
+#define disable_screenshot_patch                                    0x000CB8C6
 
 #endif
